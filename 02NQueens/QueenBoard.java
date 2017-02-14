@@ -111,7 +111,7 @@ public class QueenBoard{
     public static void main(String[] args){
 	QueenBoard chessy=new QueenBoard(Integer.parseInt(args[0]));
 	chessy.countSolutions();
-	System.out.println(chessy.getSolutions());
+	System.out.println(chessy.getSolutionCount());
     }
 }
 
