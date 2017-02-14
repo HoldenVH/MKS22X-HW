@@ -72,7 +72,7 @@ public class QueenBoard{
 	}
     }
 
-    public int getSolutions(){
+    public int getSolutionCount(){
 	return solutionCount;
     }
     public void countSolutions(){
@@ -109,9 +109,9 @@ public class QueenBoard{
 	return retStr;
     }
     public static void main(String[] args){
-	QueenBoard chessy=new QueenBoard(12);
-	chessy.solve();
-	System.out.println(chessy);
+	QueenBoard chessy=new QueenBoard(Integer.parseInt(args[0]));
+	chessy.countSolutions();
+	System.out.println(chessy.getSolutions());
     }
 }
 
