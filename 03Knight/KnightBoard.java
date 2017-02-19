@@ -37,9 +37,6 @@ public class KnightBoard{
     private static String go(int x,int y){
         return ("\033[" + x + ";" + y + "H");
     }
-
-
-
     
     public void solve() {
 	System.out.println(solveH(0,0,1));
@@ -57,12 +54,13 @@ public class KnightBoard{
 	if(level==board.length*board[0].length){
 	    return true;
 	}
-	
+	int r=0;
+	int c=0;
 	for(int loc=0;loc<_MOVES.length;loc+=2){
-	    if(!(row+_MOVES[loc]<0||row+_MOVES[loc]>=board[0].length
-		 ||col+_MOVES[loc+1]<0||col+_MOVES[loc+1]>=board.length)
-	       && board[col+_MOVES[loc+1]][row+_MOVES[loc]]==0
-	       && solveH(row+_MOVES[loc],col+_MOVES[loc+1],level+1)){
+	    r=row+_MOVES[loc];
+	    c=col+_MOVES[loc+1];
+	    if(!(r<0||r>=board[0].length||c<0||c>=board.length)&& board[c][r]==0
+	       && solveH(r,c,level+1)){
 		   return true;
 	       }
 	}
@@ -71,9 +69,7 @@ public class KnightBoard{
 
     }
     public static void main(String[] args){
-	
-	System.out.println(HIDE_CURSOR);
-	KnightBoard kb=new KnightBoard(6,5);
+	KnightBoard kb=new KnightBoard(7,7);
 	kb.solve();
 	System.out.println(kb);
 	
