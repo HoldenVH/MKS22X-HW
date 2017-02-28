@@ -3,9 +3,10 @@ import java.lang.IllegalArgumentException;
 public class Recursion{
     public static String name(){return "Higgins,Holden";}
     public static double sqrt(double n){
-	if(n<=0){
+	if(n<0){
 	    throw new IllegalArgumentException();
 	}
+	if(n==0){return n;}
 	return sh(n,1);
     }
     public static double sh(double n, double guess){
