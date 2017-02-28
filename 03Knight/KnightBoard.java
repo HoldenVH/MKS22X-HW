@@ -27,28 +27,12 @@ public class KnightBoard{
 	}
 	return s;
     }
-    private static void wait(int millis){
-        try {
-            Thread.sleep(millis);
-        }
-        catch (InterruptedException e) {
-        }
-    }
-    private static String go(int x,int y){
-        return ("\033[" + x + ";" + y + "H");
-    }
     
     public void solve() {
 	System.out.println(solveH(0,0,1));
     }
 
     private boolean solveH(int row ,int col, int level){ // level is the # of the knight
-	/*========================test=================================
-	System.out.println(CLEAR_SCREEN);
-	//go(1,1);
-	System.out.println(toString());
-	wait(1000);
-	//*///=================================================
 
 	board[col][row]=level;
 	if(level==board.length*board[0].length){
@@ -66,12 +50,5 @@ public class KnightBoard{
 	}
 	board[col][row]=0;
 	return false;
-
-    }
-    public static void main(String[] args){
-	KnightBoard kb=new KnightBoard(7,7);
-	kb.solve();
-	System.out.println(kb);
-	
     }
 }
