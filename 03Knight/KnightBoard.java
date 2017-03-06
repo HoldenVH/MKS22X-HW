@@ -1,6 +1,14 @@
 public class KnightBoard{
     private int[][] board;
-    private int[] _MOVES=new int[]{1,2,-1,2,-1,-2,1,-2,2,1,-2,1,-2,-1,2,-1};
+    private int[] _MOVES=new int[]{
+	1,2,
+	-1,2,
+	-1,-2,
+	1,-2,
+	2,1,
+	-2,1,
+	-2,-1,
+	2,-1};
     private static final String CLEAR_SCREEN =  "\033[2J";
     private static final String HIDE_CURSOR =  "\033[?25l";
 
