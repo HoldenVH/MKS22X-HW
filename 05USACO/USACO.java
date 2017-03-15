@@ -15,8 +15,9 @@ class Field {
     int[][] data;
     int rows, cols, moves, endRow, endCol, start;
     public Field(String filename) {
+	Scanner in;
 	try {
-	    Scanner in = new Scanner(new File(filename));
+	    in = new Scanner(new File(filename));
 	} catch (Exception e) {
 	    return;}
 	String[] init = in.nextLine().split(" ");
