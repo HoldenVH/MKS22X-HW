@@ -10,6 +10,7 @@ public class USACO {
 	Field mooooo = new Field(filename);
 	return mooooo.solve();
     }
+    public USACO(){}
 }
 class Field {
     int[][] data;
