@@ -1,22 +1,4 @@
 public class Quick{
-    public static int part ( int [] data, int start, int end){
-	int pivot=data[end];
-	int swaps=0;
-	int loc=start;
-	while(loc<=end){
-	    if(data[loc]<pivot){
-		int holder = data[start+swaps];
-		data[start+swaps]=data[loc];
-		data[loc]=holder;
-		swaps++;
-	    }
-		loc++;
-	}
-	int holder=data[start+swaps];
-	data[start+swaps]=pivot;
-	data[end]=holder;
-	return start+swaps;
-    }
     public static int quickselect(int []data, int k){
 	return qHelp(data,k,0,data.length-1);
     }
@@ -42,13 +24,81 @@ public class Quick{
 	    }
 	}
     }
-    /*
+
+    public static int part ( int [] a, int start, int end){
+	int v=a[start];
+	int lt=start;
+	int i=start+1;
+	int gt=end;
+	while(i<gt){
+	    if(a[i]<v){
+		swap(a,i,lt);
+		lt++;
+		i++;
+	    }
+	    if(a[i]>v){
+		swap(a,i,gt);
+		gt--;
+	    }
+	    if(a[i]==v){
+		i++;
+	    }
+	}
+	return v;
+    }
+
+    public static void quickSort(int[] a){
+	qsh(a,0,a.length-1);
+    }
+    public static void qsh( int [] a, int start, int end){
+	int v=a[start];
+	int lt=start;
+	int i=start+1;
+	int gt=end;
+	while(i<gt){
+	    if(a[i]<v){
+		swap(a,i,lt);
+		lt++;
+		i++;
+	    }
+	    if(a[i]>v){
+		swap(a,i,gt);
+		gt--;
+	    }
+	    if(a[i]==v){
+		i++;
+	    }
+	}
+	if(a[gt]<v){
+	    swap(a,gt,lt);
+	    lt++;
+	    i++;
+	}
+	for(int n=0;n<a.length;n++){
+	    System.out.print(a[n]+",");
+	}
+	System.out.println("\n"+v+"\n"+lt+","+start+"\n"+gt+","+end);
+	if(lt-1>start){
+	    qsh(a,start,lt);
+	}
+	if(gt<end){
+	    System.out.println("GT");
+	    qsh(a,gt,end);
+	}
+    }
+
+    public static void swap(int[] a, int p, int q){
+	int holder=a[p];
+	a[p]=a[q];
+	a[q]=holder;
+    }
+    
     public static void main(String[] args){
-	int[] arr={9999,5,0,4,999,2,6,1,999999,3,4};
-	System.out.println(quickselect(arr,8));
+	int[] arr={4,9999,5,0,4,999,2,6,1,999999,3,4};
+	quickSort(arr);
 	for(int i=0;i<arr.length;i++){
 	    System.out.print(arr[i]+",");
 	}
     }
-    */
+    
 }
