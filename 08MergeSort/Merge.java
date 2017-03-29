@@ -21,12 +21,10 @@ public class Merge{
     }
 
     public static void mergeSort(int[] a,int l, int r){//r & l are inclusive
-	for(int i=l;i<=r;i++){
-	    System.out.print(a[i]+",");
-	}
-	System.out.println("\nL:"+l+",      R:"+r);
+	//print2(a);
+	//System.out.println("\nL:"+l+",      R:"+r);
 	if(l+1==r){
-	    if(a[r]>a[l]) swap(a,l,r);
+	    if(a[r]<a[l]) swap(a,l,r);
 	}
 	if(l+1<r){
 	    mergeSort(a,((l+r)/2)+1,r);
@@ -35,24 +33,33 @@ public class Merge{
 	}
     }
     public static void internalSortedMerge(int[] a,int ll, int lr, int rl, int rr){//ll<lr<rl<rr,lr+1=rl
-        int[] temp=new int[rr-ll+2];
+        int[] temp=new int[rr-ll+1];
 	int L=ll;
-	int 
+	int R=rl;
+	int C=0;
 	while(L<=lr&&R<=rr){
 	    if(a[L]<a[R]){
-		temp[]=a[];
-		A++;
+		temp[C]=a[L];
+		L++;
 	    }
-	    else{c[C]=b[B];}
+	    else{
+		temp[C]=a[R];
+		R++;
+	    }
 	    C++;
 	}
 	while(L<=lr){
-	    c[C]=a[A];
-	    A++;
+	    temp[C]=a[L];
+	    L++;
+	    C++;
 	}
 	while(R<=rr){
-	    c[C]=b[B];
-	    B++;
+	    temp[C]=a[R];
+	    R++;
+	    C++;
+	}
+	for(int i=0;i+ll<=rr;i++){
+	    a[i+ll]=temp[i];
 	}
     }
 
@@ -62,11 +69,18 @@ public class Merge{
 	a[p]=a[q];
 	a[q]=holder;
     }
+    public static void print2(int[] p){
+	for(int i=0;i<p.length;i++){
+	    System.out.print(p[i]+",");
+	}
+	System.out.println();
+    }
+    /*
     public static void main(String[] args){
 	int[] arr={4,9999,5,0,4,999,2,6,1,999999,3,4};
 	mergeSort(arr,0,arr.length-1);
-	for(int i=0;i<arr.length;i++){
-	    System.out.print(arr[i]+",");
-	}
-    }
+	//int[] arg={1,3,6,7,999999,2,4,5,110};
+	//internalSortedMerge(arg,0,4,5,8);
+	print2(arr);
+	}*/
 }
