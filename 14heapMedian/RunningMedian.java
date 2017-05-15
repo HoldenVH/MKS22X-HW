@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class RunningMedian{
-    MyHeap less=new MyHeap(true);
-    MyHeap more=new MyHeap(false);
+    public MyHeap less=new MyHeap(true);
+    public MyHeap more=new MyHeap(false);
     int lessSize;
     int moreSize;
 
@@ -27,8 +27,8 @@ public class RunningMedian{
 	}
 	if(lessSize+1<moreSize){
 	    less.add(more.remove());
-	    moreSize++;
-	    lessSize--;
+	    moreSize--;
+	    lessSize++;
 	}
     }
     public double getMedian(){
@@ -46,16 +46,19 @@ public class RunningMedian{
 	}
     }
     public static void main(String[] args){
-	RunningMedian Michael = new RunningMedian();
+	RunningMedian M = new RunningMedian();
 	ArrayList<Integer> nums = new ArrayList<Integer>();
 	
-	for(int i = 0; i < 50; i++){
-	    int s = (int)(Math.random() * 101);
+	for(int i = 0; i < 10; i++){
+	    int s = (int)(Math.random() * 10);
 	    nums.add(s);
 	    Collections.sort(nums);
-	    Michael.add(s);
+
+	    M.add(s);
+	    
 	    System.out.println(nums);
-	    System.out.println(Michael.getMedian());
+	    System.out.println(M.less.peek()+"  "+M.getMedian()+"  "+M.more.peek());
+	    System.out.println(M.lessSize+" "+M.moreSize);
 	}
     }
 }

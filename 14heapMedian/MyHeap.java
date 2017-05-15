@@ -12,13 +12,9 @@ public class MyHeap{
     public void add(Integer s){
 	int index=heap.size();
 	heap.add(s);
-	int i=-1;
-	if(MyHeap){
-	    i=1;
-	}
-	if(index>1){
-	    while(index>1&& i*s.compareTo(heap.get(index/2))>0){
-		pushUp(index);
+      	if(index>1){
+	    while(index>1&& pushDown(index/2)<Math.pow(10,9)){
+		pushDown(index/2);
 		index/=2;
 	    }
 	}
@@ -50,13 +46,33 @@ public class MyHeap{
 	return rmv;
     }
     public Integer peek(){
-	return heap.get(1);
+	if(heap.size()>1){
+	    return heap.get(1);
+	}
+	return 0;
     }
 
     private void pushUp(int i){
 	heap.set(i,heap.set(i/2, heap.get(i)));
     }
-    //private pushDown(int i){    }
+    private int pushDown(int i){
+	int sign=-1;
+	if(MyHeap){
+	    sign=1;
+	}
+	
+	if(heap.size()>i*2+1 
+	   && sign*heap.get(i*2+1).compareTo(heap.get(i*2))>0
+	   && sign*heap.get(i*2).compareTo(heap.get(i))>0){
+
+	    pushUp(i*2+1);
+	    return heap.get(i*2+1);
+	}else if(sign*heap.get(i*2).compareTo(heap.get(i))>0){
+	    pushUp(i*2);
+	    return heap.get(i*2);
+	}
+	else{return (int)Math.pow(10,10);}
+    }
     public static void main(String[] arg){
 	/*	MyHeap muhHeap= new MyHeap();
 	for(int l='a';l<='z';l++){
