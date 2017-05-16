@@ -42,7 +42,7 @@ public class RunningMedian{
 	    return more.peek();
 	}
 	else{
-	    return (more.peek()+less.peek())/2;
+	    return (more.peek()+less.peek())/2.0;
 	}
     }
     public static void main(String[] args){
