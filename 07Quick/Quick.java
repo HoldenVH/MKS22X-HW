@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Quick{
     public static int quickselect(int []data, int k){
 	return qHelp(data,k,0,data.length-1);
@@ -31,58 +33,70 @@ public class Quick{
 	int i=start+1;
 	int gt=end;
 	while(i<gt){
-	    if(a[i]<v){
+	    int current=a[i];
+	    if(current<v){
 		swap(a,i,lt);
 		lt++;
 		i++;
 	    }
-	    if(a[i]>v){
+	    if(current>v){
 		swap(a,i,gt);
 		gt--;
 	    }
-	    if(a[i]==v){
+	    if(current==v){
 		i++;
 	    }
 	}
 	return v;
     }
 
-    public static void quickSort(int[] a){
-	qsh(a,0,a.length-1);
+    public static void quicksort(int[] a){
+    	if(a.length>0){
+	    qsh(a,0,a.length-1);
+	}
     }
     public static void qsh( int [] a, int start, int end){
-	int v=a[start];
+	if(start>=end)return;
+
+	Random rng=new Random();
+	int v=a[start+rng.nextInt(end-start+1)];
 	int lt=start;
-	int i=start+1;
+	int i=start;
 	int gt=end;
+	int n1=0;
+	int n2=0;
 	while(i<gt){
-	    if(a[i]<v){
-		swap(a,i,lt);
-		lt++;
-		i++;
-	    }
-	    if(a[i]>v){
+	    int current=a[i];
+	    if(current>v){
 		swap(a,i,gt);
 		gt--;
+		n2++;
 	    }
-	    if(a[i]==v){
+	    if(current<v){
+		//if(lt+1<i){
+		swap(a,i,lt);
+		//}
+		lt++;
+		i++;
+		n1++;
+
+	    }
+	    
+	    if(current==v){
 		i++;
 	    }
 	}
+	//System.out.println(n1+" "+n2);
 	if(a[gt]<v){
 	    swap(a,gt,lt);
 	    lt++;
 	    i++;
 	}
-	for(int n=0;n<a.length;n++){
-	    System.out.print(a[n]+",");
-	}
-	System.out.println("\n"+v+"\n"+lt+","+start+"\n"+gt+","+end);
 	if(lt-1>start){
+	    //System.out.println(lt+" "+i+" "+start);
 	    qsh(a,start,lt);
 	}
 	if(gt<end){
-	    System.out.println("GT");
 	    qsh(a,gt,end);
 	}
     }
@@ -91,14 +105,5 @@ public class Quick{
 	int holder=a[p];
 	a[p]=a[q];
 	a[q]=holder;
-    }
-    
-    public static void main(String[] args){
-	int[] arr={4,9999,5,0,4,999,2,6,1,999999,3,4};
-	quickSort(arr);
-	for(int i=0;i<arr.length;i++){
-	    System.out.print(arr[i]+",");
-	}
-    }
-    
+    }    
 }
