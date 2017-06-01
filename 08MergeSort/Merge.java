@@ -20,15 +20,18 @@ public class Merge{
 	}
     }
 
-    public static void mergeSort(int[] a,int l, int r){//r & l are inclusive
+    public static void mergesort(int[] a){
+	mergesort(a,0,a.length-1);
+    }
+    public static void mergesort(int[] a,int l, int r){//r & l are inclusive
 	//print2(a);
 	//System.out.println("\nL:"+l+",      R:"+r);
 	if(l+1==r){
 	    if(a[r]<a[l]) swap(a,l,r);
 	}
 	if(l+1<r){
-	    mergeSort(a,((l+r)/2)+1,r);
-	    mergeSort(a,l,(l+r)/2);
+	    mergesort(a,((l+r)/2)+1,r);
+	    mergesort(a,l,(l+r)/2);
 	    internalSortedMerge(a,l,(l+r)/2,((l+r)/2)+1,r);
 	}
     }
